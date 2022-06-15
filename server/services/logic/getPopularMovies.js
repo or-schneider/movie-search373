@@ -2,7 +2,7 @@ import omdbApi from "../omdb/omdbApi.js";
 
 export default async function getPopularMovies() {
   const movies = await omdbApi.getMoviesByIds([
-    "t0068646",
+    "tt0068646",
     "tt0468569",
     "tt0109830",
     "tt1375666",
@@ -13,6 +13,7 @@ export default async function getPopularMovies() {
     "tt0110357",
     "tt0119217",
   ]);
+
   if (movies.error) return movies;
 
   for (let i = 0; i < movies.length; i++) {
@@ -26,6 +27,7 @@ export default async function getPopularMovies() {
       title: movie.Title,
       description: movie.Genre,
       imdbRating: movie.imdbRating,
+      id: movie.imdbID,
     };
     movies[i] = filteredMovie;
   }
