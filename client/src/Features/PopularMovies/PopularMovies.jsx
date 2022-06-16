@@ -1,4 +1,4 @@
-import MoviesList from "./List/MoviesList.jsx";
+import MoviesList from "../MoviesList/MoviesList.jsx";
 import style from "./PopularMovies.module.css";
 import usePopularMovies from "./usePopularMovies.jsx";
 
@@ -9,7 +9,8 @@ function PopularMovies() {
 
   return (
     <div className={style.root}>
-      Popular Movies
+      <h2 className={style.title}>Popular Movies</h2>
+
       <MoviesList moviesData={popularMovies}></MoviesList>
     </div>
   );

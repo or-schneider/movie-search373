@@ -1,0 +1,25 @@
+.root {
+  display: grid;
+  justify-content: center;
+  /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
+  grid-template-columns: 1fr 1fr;
+
+  gap: 28px;
+  flex-grow: 1;
+}
+
+@media (min-width: 600px) {
+  .root {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .root {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 1280px) {
+  .root {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
