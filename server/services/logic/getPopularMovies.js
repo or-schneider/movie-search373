@@ -1,4 +1,5 @@
 import omdbApi from "../omdb/omdbApi.js";
+import formatMoviesToShortForm from "./formatMoviesToShortForm.js";
 
 export default async function getPopularMovies() {
   const movies = await omdbApi.getMoviesByIds([
@@ -15,21 +16,7 @@ export default async function getPopularMovies() {
   ]);
 
   if (movies.error) return movies;
+  const moviesShortForm = formatMoviesToShortForm(movies);
 
-  for (let i = 0; i < movies.length; i++) {
-    const movie = movies[i];
-
-    if (movie.error) {
-      continue;
-    }
-    const filteredMovie = {
-      img: movie.Poster,
-      title: movie.Title,
-      description: movie.Genre,
-      imdbRating: movie.imdbRating,
-      id: movie.imdbID,
-    };
-    movies[i] = filteredMovie;
-  }
-  return movies;
+  return moviesShortForm;
 }

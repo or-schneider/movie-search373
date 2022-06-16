@@ -1,5 +1,5 @@
 import { request } from "express";
-import omdbApi from "../services/omdb/omdbApi.js";
+import searchMovies from "../services/logic/searchMovies.js";
 
 export default async function searchMoviesController(req = request, res) {
   const { q, page } = req.query;
@@ -10,9 +10,13 @@ export default async function searchMoviesController(req = request, res) {
   let pageNumber = parseInt(page);
   if (!pageNumber || pageNumber < 1) pageNumber = 1;
 
-  const searchResults = await omdbApi.searchMovies(q, pageNumber);
+  const searchResults = await searchMovies(q, pageNumber);
   if (searchResults.error)
-    return res.status(400).send({ message: searchResults.error });
-
+    switch (searchResults.error) {
+      case "Too many results.":
+        return res.status(403).send({ message: searchResults.error });
+      default:
+        return res.status(400).send({ message: searchResults.error });
+    }
   return res.send(searchResults);
 }
