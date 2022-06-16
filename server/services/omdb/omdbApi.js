@@ -36,4 +36,19 @@ async function getMoviesByIds(ids = []) {
     return { error };
   }
 }
-export default { getMovieById, getMoviesByIds };
+async function searchMovies(query = "", page = 1) {
+  try {
+    const movies = await axios.get(`${baseUrl}&s=${query}&page=${page}`);
+    if (movies.data.Error) {
+      movies.data.error = movies.data.Error;
+      delete movies.data.Error;
+      return movies.data;
+    }
+
+    return movies.data;
+  } catch (error) {
+    console.log(error);
+    return { error };
+  }
+}
+export default { getMovieById, getMoviesByIds, searchMovies };
