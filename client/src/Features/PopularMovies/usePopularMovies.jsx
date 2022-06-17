@@ -10,9 +10,10 @@ function usePopularMovies() {
       try {
         const movies = await axios.get(`${apiBaseUrl}/movies/popular`);
         setPopularMovies(movies.data);
+
+        setError(null);
       } catch (error) {
-        console.log(error); //TODO
-        setError(error.message);
+        setError(error.response.data.message);
       }
     })();
   }, []);

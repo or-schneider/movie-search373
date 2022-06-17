@@ -9,7 +9,8 @@ function PopularMovies() {
 
   return (
     <div className={style.root}>
-      <h2 className={style.title}>Popular Movies</h2>
+      {/* TODO Check if a title is neccessary  */}
+      {/* <h2 className={style.title}>Popular Movies</h2>  */}
 
       <MoviesList moviesData={popularMovies}></MoviesList>
     </div>
