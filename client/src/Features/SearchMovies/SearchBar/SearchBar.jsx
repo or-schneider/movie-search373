@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "./SearchBar.module.css";
-
+import SearchIcon from "./SearchIcon.svg";
 function SearchBar({ onSearchSumbit = () => {} }) {
   const [searchInput, setSearchInput] = useState("");
   function handleSearchSubmit(event) {
@@ -12,11 +12,15 @@ function SearchBar({ onSearchSumbit = () => {} }) {
   }
   return (
     <form className={style.root} onSubmit={handleSearchSubmit}>
-      <input
-        type="text"
-        onChange={handleSearchInputChange}
-        placeholder="Search"
-      />
+      <div className={style.searchBarContainer}>
+        <img className={style.searchIcon} src={SearchIcon} alt="Search" />
+        <input
+          className={style.searchBarInput}
+          type="text"
+          onChange={handleSearchInputChange}
+          placeholder="Search"
+        />
+      </div>
     </form>
   );
 }

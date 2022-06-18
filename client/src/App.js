@@ -1,3 +1,6 @@
+import style from "./App.module.css";
+
+import ErrorMessage from "./Features/ErrorMessage/ErrorMessage.jsx";
 import MoviesList from "./Features/MoviesList/MoviesList.jsx";
 import PopularMovies from "./Features/PopularMovies/PopularMovies.jsx";
 import SearchBar from "./Features/SearchMovies/SearchBar/SearchBar.jsx";
@@ -17,13 +20,14 @@ function App() {
     return <MoviesList moviesData={searchResults}></MoviesList>;
   }
   function renderSearchError() {
-    if (!searchError) return <div>&nbsp;</div>;
-    return <div>{searchError}</div>;
+    return;
   }
   return (
-    <div>
+    <div className={style.root}>
       <SearchBar onSearchSumbit={handleSearchBarSubmit}></SearchBar>
-      {renderSearchError()}
+      <ErrorMessage message={searchError} className={style.searchError}>
+        {searchError}
+      </ErrorMessage>
       {renderPopularMovies()}
       {renderMoviesSearchResults()}
     </div>

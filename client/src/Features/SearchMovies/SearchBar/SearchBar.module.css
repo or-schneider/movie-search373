@@ -1,9 +1,42 @@
 .root {
-  padding: 0px min(8%, 150px);
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  background-color: #1c1c1c;
+  padding: 16px;
 }
 .title {
   -pass: 0;
+}
+.searchBarContainer {
+  display: flex;
+  background-color: #353535;
+
+  padding: 0px 16px;
+  flex-grow: 1;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 38px;
+  gap: 8px;
+  align-items: center;
+}
+
+.searchIcon {
+  height: 80%;
+  color: white;
+}
+.searchBarInput {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
+}
+.searchBarInput::placeholder {
+  color: rgba(255, 255, 255, 0.322);
+}
+.searchBarInput:focus {
+  border: none;
+  outline: none;
 }
