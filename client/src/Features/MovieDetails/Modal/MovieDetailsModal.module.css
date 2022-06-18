@@ -1,0 +1,6 @@
+.root {
+  border-radius: 12px;
+  max-width: 512px;
+  width: 80%;
+  box-shadow: 3px 0px 48px 6px rgb(0 0 0 / 23%);
+}

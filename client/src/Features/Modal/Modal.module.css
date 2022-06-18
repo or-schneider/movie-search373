@@ -1,0 +1,32 @@
+.root {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  transition: 0.18s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.background {
+  position: absolute;
+  background-color: #0000003a;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.content {
+  background-color: rgba(255, 255, 255, 1);
+}
+.invisible {
+  pointer-events: none;
+  opacity: 0;
+}

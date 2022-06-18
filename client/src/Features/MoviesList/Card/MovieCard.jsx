@@ -3,9 +3,14 @@ import style from "./MovieCard.module.css";
 
 function MovieCard({
   movieData = { img: "", title: "", description: "", imdbRating: "" },
+  id,
+  onCardClick = (id) => {},
 }) {
+  function handleCardClick() {
+    onCardClick(id);
+  }
   return (
-    <button className={style.root}>
+    <button className={style.root} onClick={handleCardClick}>
       <img className={style.img} src={movieData.img}></img>
       <div className={style.content}>
         <div className={style.textTruncateContainer}>
