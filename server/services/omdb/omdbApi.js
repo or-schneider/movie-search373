@@ -47,7 +47,6 @@ async function searchMovies(query = "", page = 1) {
 
     return movies.data;
   } catch (error) {
-    console.log(error);
     return { error };
   }
 }

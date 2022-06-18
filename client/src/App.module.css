@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 8px;
   min-height: 100vh;
 }
 .searchError {
   text-align: center;
+  position: absolute;
+}
+.moviesListContainer {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 .moviesList {
   place-self: center;

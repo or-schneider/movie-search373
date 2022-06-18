@@ -42,8 +42,10 @@ function App() {
     <div className={style.root}>
       <SearchBar onSearchSumbit={handleSearchBarSubmit}></SearchBar>
 
-      {renderErrorMessage()}
-      {renderMoviesList()}
+      <div className={style.moviesListContainer}>
+        {renderErrorMessage()}
+        {renderMoviesList()}
+      </div>
     </div>
   );
 }
