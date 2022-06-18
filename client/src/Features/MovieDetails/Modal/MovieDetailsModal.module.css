@@ -1,6 +1,24 @@
 .root {
-  border-radius: 12px;
-  max-width: 512px;
-  width: 80%;
-  box-shadow: 3px 0px 48px 6px rgb(0 0 0 / 23%);
+  -pass: 0;
+}
+.closeButton {
+  background-color: #0c0c0cbb;
+  z-index: 2;
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  right: 6px;
+  top: 6px;
+  border-radius: 8px;
+}
+.closeButton:hover {
+  background-color: #0c0c0cfa;
+}
+.closeButton:active {
+  filter: brightness(1.5);
+}
+.closeButtonIcon {
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
 }

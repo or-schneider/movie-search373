@@ -53,6 +53,7 @@ function App() {
       <MovieDetailsModal
         show={!!selectedMovieId}
         onBackgroundClick={ClearSelectedMovie}
+        onCloseClick={ClearSelectedMovie}
         movieId={selectedMovieId}
       ></MovieDetailsModal>
       <div className={style.moviesListContainer}>

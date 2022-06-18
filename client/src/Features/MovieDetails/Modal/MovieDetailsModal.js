@@ -1,10 +1,27 @@
 import style from "./MovieDetailsModal.module.css";
 import Modal from "../../Modal/Modal.js";
 import useMovieDetails from "../useMovieDetails.js";
+import MovieDetailsPanel from "../Details/MovieDetailsPanel.jsx";
 
-function MovieDetailsModal({ show, onBackgroundClick, movieId = null }) {
-  const { movieDetails } = useMovieDetails({ movieId });
-
+function MovieDetailsModal({
+  show,
+  onBackgroundClick,
+  onCloseClick,
+  movieId = null,
+}) {
+  const { movieDetails, movieDetailsError } = useMovieDetails({ movieId });
+  function renderMovieDetailsPanel() {
+    if (movieDetails)
+      return (
+        <MovieDetailsPanel movieDetailsData={movieDetails}>
+          <button className={style.closeButton}>
+            <div className={style.closeButtonIcon} onClick={onCloseClick}>
+              X
+            </div>
+          </button>
+        </MovieDetailsPanel>
+      );
+  }
   return (
     <Modal
       show={true}
@@ -12,7 +29,7 @@ function MovieDetailsModal({ show, onBackgroundClick, movieId = null }) {
       onBackgroundClick={onBackgroundClick}
       className={style.root}
     >
-      <div className={style.formContainer}>{movieId}</div>
+      {renderMovieDetailsPanel()}
     </Modal>
   );
 }

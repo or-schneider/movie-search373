@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 const apiBaseUrl = process.env.REACT_APP_MOVIES_API_BASE_URL;
 
 function useMovieDetails({ movieId = "" }) {
-  const [movieDetails, setMovieDetails] = useState(movieId);
+  const [movieDetails, setMovieDetails] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {
     (async () => {
-      if (!movieId) return;
+      if (!movieId) {
+        setMovieDetails(null);
+        return;
+      }
       try {
         const movieDetailsResponse = await axios.get(
           `${apiBaseUrl}/movies/${movieId}`
@@ -24,7 +27,7 @@ function useMovieDetails({ movieId = "" }) {
       }
     })();
   }, [movieId]);
-  return { movieDetails, error };
+  return { movieDetails, movieDetailsError: error };
 }
 
 export default useMovieDetails;
