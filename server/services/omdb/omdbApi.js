@@ -9,7 +9,6 @@ async function getMovieById(id = "") {
 
     return movie.data;
   } catch (error) {
-    console.log(error);
     return { error };
   }
 }
