@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useCallback } from "react";
 import { useEffect, useState } from "react";
 
 const apiBaseUrl = process.env.REACT_APP_MOVIES_API_BASE_URL;
@@ -13,11 +14,21 @@ function usePopularMovies() {
 
         setError(null);
       } catch (error) {
-        setError(error.response.data.message);
+        let errorMessage = error.message;
+        if (error.response?.data?.message)
+          errorMessage = error.response?.data?.message;
+        setError(errorMessage);
       }
     })();
   }, []);
-  return { popularMovies, popularMoviesError: error };
+  const clearError = useCallback(function () {
+    setError(null);
+  }, []);
+  return {
+    popularMovies,
+    popularMoviesError: error,
+    clearPopularMoviesError: clearError,
+  };
 }
 
 export default usePopularMovies;

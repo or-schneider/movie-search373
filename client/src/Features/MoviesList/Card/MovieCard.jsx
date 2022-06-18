@@ -5,7 +5,7 @@ function MovieCard({
   movieData = { img: "", title: "", description: "", imdbRating: "" },
 }) {
   return (
-    <button className={style.root}>
+    <div className={style.root}>
       <img className={style.img} src={movieData.img}></img>
       <div className={style.content}>
         <div className={style.textTruncateContainer}>
@@ -20,7 +20,7 @@ function MovieCard({
         </div>
         <p>{movieData.imdbRating}</p>
       </div>
-    </button>
+    </div>
   );
 }
 

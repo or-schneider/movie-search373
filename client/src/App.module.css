@@ -8,3 +8,6 @@
 .searchError {
   text-align: center;
 }
+.moviesList {
+  place-self: center;
+}

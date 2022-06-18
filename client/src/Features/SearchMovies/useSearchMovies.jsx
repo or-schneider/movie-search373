@@ -22,7 +22,11 @@ function useSearchMovies() {
 
       return movies.data.results;
     } catch (error) {
-      setError(error.response.data.message);
+      let errorMessage = error.message;
+      if (error.response?.data?.message)
+        errorMessage = error.response?.data?.message;
+
+      setError(errorMessage);
     }
   }, []);
   return {

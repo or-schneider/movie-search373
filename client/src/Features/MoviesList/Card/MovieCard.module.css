@@ -5,12 +5,14 @@
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0 0 4px 4px;
   transition: 0.18s;
-  max-width: 248px;
+  max-width: 192px;
   overflow: hidden;
 }
 .img {
   flex-grow: 1;
+  object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 .root:hover {
   filter: brightness(1.05) saturate(1.55);
