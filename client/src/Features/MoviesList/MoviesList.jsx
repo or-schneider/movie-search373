@@ -7,10 +7,10 @@ function MoviesList({
   onMovieClick = (id) => {},
 }) {
   function renderMoviesList() {
-    return moviesData.map((movie) => {
+    return moviesData.map((movie, index) => {
       return (
         <MovieCard
-          key={movie.id}
+          key={movie.id + index}
           id={movie.id}
           movieData={movie}
           onCardClick={handleMovieCardClick}

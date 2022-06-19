@@ -6,12 +6,21 @@ import MovieDetailsModal from "./Features/MovieDetails/Modal/MovieDetailsModal.j
 import MoviesList from "./Features/MoviesList/MoviesList.jsx";
 import usePopularMovies from "./Features/PopularMovies/usePopularMovies.jsx";
 import SearchBar from "./Features/SearchMovies/SearchBar/SearchBar.jsx";
+import SearchPageNavigation from "./Features/SearchMovies/SearchPageNavigation/SearchPageNavigation.jsx";
 import useSearchMovies from "./Features/SearchMovies/useSearchMovies.jsx";
 import Spinner from "./Features/Spinner/Spinner.jsx";
 
 function App() {
-  const { search, searchResults, searchError, searchInProgress } =
-    useSearchMovies();
+  const {
+    search,
+    searchResults,
+    searchError,
+    searchInProgress,
+    activePage,
+    totalPages,
+    searchPreviousPage,
+    searchNextPage,
+  } = useSearchMovies();
   const {
     popularMovies,
     popularMoviesError,
@@ -53,6 +62,18 @@ function App() {
       ></ErrorMessage>
     );
   }
+  function renderSearchPageNavigation() {
+    if (searchResults.length === 0) return null;
+    return (
+      <SearchPageNavigation
+        page={activePage}
+        totalPages={totalPages}
+        onPreviousClick={searchPreviousPage}
+        onNextClick={searchNextPage}
+        searchInProgress={searchInProgress}
+      ></SearchPageNavigation>
+    );
+  }
   return (
     <div className={style.root}>
       <SearchBar onSearchSumbit={handleSearchBarSubmit}></SearchBar>
@@ -70,6 +91,8 @@ function App() {
         {renderErrorMessage()}
         {renderMoviesList()}
       </div>
+
+      {renderSearchPageNavigation()}
     </div>
   );
 }
