@@ -8,17 +8,18 @@ function useSearchMovies() {
   const [activePage, setActivePage] = useState(1);
   const [totalResults, setTotalResults] = useState([]);
   const [error, setError] = useState(null);
+  const [searchInProgress, setSearchInProgress] = useState(false);
 
   const search = useCallback(async function search(query = "", page = 1) {
     try {
+      setError(() => null);
+      setSearchInProgress(() => true);
       const movies = await axios.get(
         `${apiBaseUrl}/movies/search/?q=${query}&${page}`
       );
       setSearchResults(movies.data.results);
       setTotalResults(movies.data.totalResults);
       setActivePage(page);
-
-      setError(null);
 
       return movies.data.results;
     } catch (error) {
@@ -27,6 +28,8 @@ function useSearchMovies() {
         errorMessage = error.response?.data?.message;
 
       setError(errorMessage);
+    } finally {
+      setSearchInProgress(() => false);
     }
   }, []);
   return {
@@ -35,6 +38,7 @@ function useSearchMovies() {
     activePage,
     search,
     searchError: error,
+    searchInProgress,
   };
 }
 

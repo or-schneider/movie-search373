@@ -7,11 +7,17 @@ import MoviesList from "./Features/MoviesList/MoviesList.jsx";
 import usePopularMovies from "./Features/PopularMovies/usePopularMovies.jsx";
 import SearchBar from "./Features/SearchMovies/SearchBar/SearchBar.jsx";
 import useSearchMovies from "./Features/SearchMovies/useSearchMovies.jsx";
+import Spinner from "./Features/Spinner/Spinner.jsx";
 
 function App() {
-  const { search, searchResults, searchError } = useSearchMovies();
-  const { popularMovies, popularMoviesError, clearPopularMoviesError } =
-    usePopularMovies();
+  const { search, searchResults, searchError, searchInProgress } =
+    useSearchMovies();
+  const {
+    popularMovies,
+    popularMoviesError,
+    clearPopularMoviesError,
+    fetchingPopularMoviesInProgress,
+  } = usePopularMovies();
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   async function handleSearchBarSubmit(query) {
     clearPopularMoviesError();
@@ -57,6 +63,10 @@ function App() {
         movieId={selectedMovieId}
       ></MovieDetailsModal>
       <div className={style.moviesListContainer}>
+        <Spinner
+          className={style.searchSpinner}
+          show={searchInProgress || fetchingPopularMoviesInProgress}
+        ></Spinner>
         {renderErrorMessage()}
         {renderMoviesList()}
       </div>

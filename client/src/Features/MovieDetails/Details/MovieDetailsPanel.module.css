@@ -2,13 +2,16 @@
   position: relative;
   border: solid 2px rgba(0, 0, 0, 0.534);
   max-width: 85vw;
-  width: 400px;
   max-height: 92vh;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
+
+  scrollbar-width: thin;
+  scrollbar-color: #2b2a2a73 #c2c2c2dc;
+  width: min-content;
 }
 .root::-webkit-scrollbar {
   width: 0.3rem;

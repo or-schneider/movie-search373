@@ -15,6 +15,8 @@ export default async function searchMoviesController(req = request, res) {
     switch (searchResults.error) {
       case "Too many results.":
         return res.status(403).send({ message: searchResults.error });
+      case "Movie not found!":
+        return res.status(404).send({ message: searchResults.error });
       default:
         return res.status(400).send({ message: searchResults.error.message });
     }

@@ -1,5 +1,7 @@
 .root {
-  -pass: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .closeButton {
   background-color: #0c0c0cbb;
@@ -21,4 +23,18 @@
   font-size: 24px;
   font-weight: 500;
   color: white;
+}
+.spinnerContainer {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.spinner {
+  width: 48px;
 }
