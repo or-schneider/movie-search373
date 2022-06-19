@@ -1,9 +1,7 @@
-import Cache from "../../core/cache.js";
 import omdbApi from "../omdb/omdbApi.js";
 import formatMoviesToShortForm from "./formatMoviesToShortForm.js";
+import popularMoviesCache from "./popularMoviesCache.js";
 
-const cacheMaxSize = 10;
-const popularMoviesCache = new Cache(cacheMaxSize);
 const popularMoviesIds = [
   "tt0068646",
   "tt0468569",
@@ -39,6 +37,7 @@ export default async function getPopularMovies() {
   if (getMoviesResponse.error) return getMoviesResponse;
 
   const moviesFromApiShortForm = formatMoviesToShortForm(getMoviesResponse);
+
   for (const movieFromApiShortForm of moviesFromApiShortForm) {
     popularMoviesCache.push(movieFromApiShortForm.id, movieFromApiShortForm);
   }
