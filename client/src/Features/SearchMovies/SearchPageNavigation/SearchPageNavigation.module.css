@@ -18,21 +18,26 @@
   text-align: center;
   background-color: #393d3e;
   color: white;
+  cursor: default;
 }
 .button {
-  color: white;
+  color: rgb(0, 0, 0);
   border: solid black 1px;
   padding: 6px 10px;
-  background-color: #6a2424d1;
+  background-color: #ffffffd1;
 }
-.button:hover {
+.button:hover:enabled {
   filter: brightness(1.1);
+  background-color: rgb(139, 60, 60);
+  color: white;
 }
 .button:disabled {
+  border-color: rgba(0, 0, 0, 0.178);
   filter: brightness(1);
   cursor: default;
-  background-color: #413d3dd1;
+  background-color: #413d3d5d;
+  opacity: 0.5;
 }
 .button:enabled:active {
-  filter: brightness(1.25);
+  filter: brightness(1.5);
 }
