@@ -1,6 +1,6 @@
 .root {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-bottom: 14px;
   flex-grow: 1;
   flex-direction: column;
@@ -16,11 +16,13 @@
   width: 32px;
   padding: 4px;
   text-align: center;
+  background-color: #393d3e;
+  color: white;
 }
 .button {
   color: white;
   border: solid black 1px;
-  padding: 6px 16px;
+  padding: 6px 10px;
   background-color: #6a2424d1;
 }
 .button:hover {

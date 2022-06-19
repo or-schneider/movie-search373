@@ -31,7 +31,6 @@ async function getMoviesByIds(ids = []) {
     }
     return movies;
   } catch (error) {
-    console.log(error);
     return { error };
   }
 }

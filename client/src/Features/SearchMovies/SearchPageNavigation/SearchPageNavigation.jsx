@@ -27,7 +27,7 @@ function SearchPageNavigation({
           disabled={page <= 1}
           onClick={handlePreviousClick}
         >
-          Previous
+          {"<"}
         </button>
         <div className={style.currentPage}>{page}</div>
         <button
@@ -35,7 +35,7 @@ function SearchPageNavigation({
           disabled={page >= totalPages}
           onClick={handleNextClick}
         >
-          Next
+          {">"}
         </button>
       </div>
     </div>

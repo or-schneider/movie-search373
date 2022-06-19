@@ -1,5 +1,5 @@
 import omdbApi from "../omdb/omdbApi.js";
-import movieDetailsCache from "./movieDetailsCache.js";
+import movieDetailsCache from "./caches/movieDetailsCache.js";
 
 export default async function getMovieDetails(movieId = "") {
   const movieFromCache = movieDetailsCache.get(movieId);

@@ -1,7 +1,7 @@
 import omdbApi from "../omdb/omdbApi.js";
+import popularMoviesCache from "./caches/popularMoviesCache.js";
 import formatMoviesToShortForm from "./formatMoviesToShortForm.js";
-import popularMoviesCache from "./popularMoviesCache.js";
-
+popularMoviesCache;
 const popularMoviesIds = [
   "tt0068646",
   "tt0468569",

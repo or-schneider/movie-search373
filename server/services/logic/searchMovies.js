@@ -1,7 +1,7 @@
 import omdbApi from "../omdb/omdbApi.js";
+import moviesCache from "./caches/moviesCache.js";
+import popularMoviesCache from "./caches/popularMoviesCache.js";
 import formatMoviesToShortForm from "./formatMoviesToShortForm.js";
-import moviesCache from "./moviesCache.js";
-import popularMoviesCache from "./popularMoviesCache.js";
 
 export default async function searchMovies(query = "", page = 1) {
   const searchResults = await omdbApi.searchMovies(query, page);
