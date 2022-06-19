@@ -1,6 +1,12 @@
 import omdbApi from "../omdb/omdbApi.js";
+import movieDetailsCache from "./movieDetailsCache.js";
 
 export default async function getMovieDetails(movieId = "") {
+  const movieFromCache = movieDetailsCache.get(movieId);
+  if (movieFromCache) {
+    return movieFromCache;
+  }
+
   const movie = await omdbApi.getMovieById(movieId);
   if (movie.error) return movie;
   const formattedMovie = {
@@ -15,5 +21,8 @@ export default async function getMovieDetails(movieId = "") {
     imdbRating: movie.imdbRating,
     runtime: movie.Runtime,
   };
+
+  movieDetailsCache.push(movieId, formattedMovie);
+
   return formattedMovie;
 }
