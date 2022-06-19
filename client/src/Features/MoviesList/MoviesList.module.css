@@ -4,8 +4,8 @@
   /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
   grid-template-columns: 1fr 1fr;
 
-  gap: 28px;
-  padding: 42px 5%;
+  gap: 26px;
+  padding: 38px 5%;
 }
 
 @media (min-width: 600px) {

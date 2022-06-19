@@ -1,8 +1,36 @@
 .root {
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 12px;
-  padding-bottom: 24px;
+  justify-content: end;
+  padding-bottom: 14px;
   flex-grow: 1;
+  flex-direction: column;
+}
+.navigationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.currentPage {
+  border: solid #000000a3 1px;
+  width: 32px;
+  padding: 4px;
+  text-align: center;
+}
+.button {
+  color: white;
+  border: solid black 1px;
+  padding: 6px 16px;
+  background-color: #6a2424d1;
+}
+.button:hover {
+  filter: brightness(1.1);
+}
+.button:disabled {
+  filter: brightness(1);
+  cursor: default;
+  background-color: #413d3dd1;
+}
+.button:enabled:active {
+  filter: brightness(1.25);
 }

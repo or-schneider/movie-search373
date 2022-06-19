@@ -21,13 +21,23 @@ function SearchPageNavigation({
   }
   return (
     <div className={style.root}>
-      <button disabled={page <= 1} onClick={handlePreviousClick}>
-        Previous
-      </button>
-      <div>{page}</div>
-      <button disabled={page >= totalPages} onClick={handleNextClick}>
-        Next
-      </button>
+      <div className={style.navigationContainer}>
+        <button
+          className={style.button}
+          disabled={page <= 1}
+          onClick={handlePreviousClick}
+        >
+          Previous
+        </button>
+        <div className={style.currentPage}>{page}</div>
+        <button
+          className={style.button}
+          disabled={page >= totalPages}
+          onClick={handleNextClick}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
