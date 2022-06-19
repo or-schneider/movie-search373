@@ -23,6 +23,9 @@ function useSearchMovies() {
       setActivePage(page);
       setActiveQuery(query);
 
+      const searchQueryUrlParam = `?query=${query}&page=${page}`;
+      window.history.replaceState({}, "", searchQueryUrlParam);
+
       return movies.data.results;
     } catch (error) {
       let errorMessage = error.message;

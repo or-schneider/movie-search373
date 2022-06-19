@@ -1,8 +1,12 @@
 import { useState } from "react";
 import style from "./SearchBar.module.css";
 import SearchIcon from "./SearchIcon.svg";
-function SearchBar({ onSearchSumbit = () => {} }) {
-  const [searchInput, setSearchInput] = useState("");
+function SearchBar({
+  onSearchSumbit = () => {},
+  initialQuery = null ? "" : "",
+}) {
+  const [searchInput, setSearchInput] = useState(initialQuery);
+
   function handleSearchSubmit(event) {
     event.preventDefault();
     onSearchSumbit(searchInput);
@@ -17,6 +21,7 @@ function SearchBar({ onSearchSumbit = () => {} }) {
         <input
           className={style.searchBarInput}
           type="text"
+          value={searchInput}
           onChange={handleSearchInputChange}
           placeholder="Search"
         />

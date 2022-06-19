@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import style from "./App.module.css";
 
 import ErrorMessage from "./Features/ErrorMessage/ErrorMessage.jsx";
@@ -11,6 +11,12 @@ import useSearchMovies from "./Features/SearchMovies/useSearchMovies.jsx";
 import Spinner from "./Features/Spinner/Spinner.jsx";
 
 function App() {
+  const params = useMemo(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    return params;
+  }, []);
+
   const {
     search,
     searchResults,
@@ -32,10 +38,19 @@ function App() {
     clearPopularMoviesError();
     search(query);
   }
+  useEffect(() => {
+    if (!params.query) return;
+    const pageNumber = parseInt(params.page);
+    if (!pageNumber) {
+      search(params.query);
+      return;
+    }
+    search(params.query, pageNumber);
+  }, [params, search]);
 
   function renderMoviesList() {
     let moviesData = [];
-    if (searchResults.length > 0) moviesData = searchResults;
+    if (searchResults.length > 0 || params.query) moviesData = searchResults;
     else if (popularMovies.length > 0) moviesData = popularMovies;
     return (
       <MoviesList
@@ -76,7 +91,10 @@ function App() {
   }
   return (
     <div className={style.root}>
-      <SearchBar onSearchSumbit={handleSearchBarSubmit}></SearchBar>
+      <SearchBar
+        onSearchSumbit={handleSearchBarSubmit}
+        initialQuery={params.query}
+      ></SearchBar>
       <MovieDetailsModal
         show={!!selectedMovieId}
         onBackgroundClick={ClearSelectedMovie}
