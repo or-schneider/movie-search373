@@ -11,7 +11,11 @@ function MovieCard({
   }
   return (
     <button className={style.root} onClick={handleCardClick}>
-      <img className={style.img} src={movieData.img}></img>
+      <img
+        className={style.img}
+        src={movieData.img}
+        alt={movieData.title}
+      ></img>
       <div className={style.content}>
         <div className={style.textTruncateContainer}>
           <h3 className={`${style.title} ${style.textTruncate}`}>

@@ -4,7 +4,7 @@ import cors from "cors";
 
 const app = express();
 
-const port = process.env.port;
+const port = process.env.PORT;
 const host = process.env.HOST;
 const url = `http://${host}:${port}`;
 

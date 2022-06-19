@@ -19,7 +19,11 @@ function MovieDetailsPanel({
   return (
     <div className={style.root}>
       {children}
-      <img className={style.img} src={movieDetailsData.img}></img>
+      <img
+        className={style.img}
+        src={movieDetailsData.img}
+        alt={movieDetailsData.title}
+      ></img>
       <div className={style.details}>
         <div className={`${style.detailsHeader} ${style.fitContent}`}>
           <h2>{movieDetailsData.title}</h2>
