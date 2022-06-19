@@ -29,7 +29,11 @@ function MovieDetailsPanel({
           {movieDetailsData.year} &#183; {movieDetailsData.runtime}
         </p>
         <p>{movieDetailsData.genre}</p>
-        <p className={style.fitContent}>{movieDetailsData.plot}</p>
+        <div style={{ display: "flex" }}>
+          <p className={`${style.fitContent} ${style.plot}`}>
+            {movieDetailsData.plot}
+          </p>
+        </div>
         <div className={style.separatorLine}></div>
         <p className={style.fitContent}>
           Director: {movieDetailsData.director}
