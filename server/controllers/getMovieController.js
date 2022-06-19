@@ -7,7 +7,24 @@ export default async function getMovieController(req, res) {
   const movie = await getMovieDetails(id);
 
   if (movie.error) {
-    return res.status(400).send({ message: movie.error.message });
+    let errorCode;
+    let errorMessage;
+    if (
+      movie.error === "Incorrect IMDb ID." ||
+      movie.error === "Invalid IMDb ID."
+    ) {
+      errorCode = 400;
+      errorMessage = movie.error;
+    } else if (
+      movie.error?.response?.data?.Error === "Request limit reached!"
+    ) {
+      errorCode = 429;
+      errorMessage = movie.error.response.data.Error;
+    } else {
+      errorCode = 500;
+      errorMessage = movie.error.message;
+    }
+    return res.status(errorCode).send({ message: errorMessage });
   }
 
   return res.send(movie);

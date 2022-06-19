@@ -11,14 +11,32 @@ export default async function searchMoviesController(req = request, res) {
   if (!pageNumber || pageNumber < 1) pageNumber = 1;
 
   const searchResults = await searchMovies(q, pageNumber);
-  if (searchResults.error)
+  if (searchResults.error) {
+    let errorCode;
+    let errorMessage;
     switch (searchResults.error) {
       case "Too many results.":
-        return res.status(403).send({ message: searchResults.error });
+        errorCode = 403;
+        errorMessage = searchResults.error;
+        break;
       case "Movie not found!":
-        return res.status(404).send({ message: searchResults.error });
+        errorCode = 404;
+        errorMessage = searchResults.error;
       default:
-        return res.status(400).send({ message: searchResults.error.message });
+        if (searchResults.error?.response?.data?.Error)
+          if (
+            searchResults.error?.response?.data?.Error ===
+            "Request limit reached!"
+          ) {
+            errorCode = 429;
+            errorMessage = searchResults.error.response.data.Error;
+            break;
+          }
+        errorCode = 500;
+        errorMessage = searchResults.error.message;
+        break;
     }
+    return res.status(errorCode).send({ message: errorMessage });
+  }
   return res.send(searchResults);
 }
